@@ -64,4 +64,15 @@ public class MyHashMap <K,V> {
     public int size(){
         return size;
     }
+    public V get(Object key) {
+        int index = hash((K)key)%size;
+        Node<K, V> current = table[index];
+        while (current != null) {
+            if (current.key.equals(key)) {
+                return current.value;
+            }
+            current = current.next;
+        }
+        return null;
+    }
 }
